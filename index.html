@@ -94,13 +94,8 @@
             
             fetch (endPoint)
               .then(resp=> {
-                if (resp.ok) {
-                  
-                  return resp.json()
-                } else {
-                  return date => outPut.value("Not SUCCESSFUL")
-                }
-              })
+                if (resp.ok) { return resp.json()
+                } else {  return date => outPut.value("Not SUCCESSFUL") }})
               .then(dataOutput=>outPut.value = JSON.stringify(dataOutput))
               .catch(error => outPut.value = error)
           }
@@ -119,12 +114,8 @@
               let idPrompt = window.prompt("ID : ");
               fetch(endPoint + '/' + idPrompt)
                 .then(resp => {
-                  if (resp.ok) {
-                    return resp.json()
-                  } else {
-                    return "ID not in db"
-                  }
-                })
+                  if (resp.ok) { return resp.json()
+                  } else {  return "ID not in db" }})
                 .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
                 .catch(error => outPut.value = error)
             }
@@ -181,11 +172,9 @@
               body: JSON.stringify(inputData)
             })
               .then(resp => resp.json())
-              // .then(json => console.log(json))
               .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
               .catch(error => outPut.value = error)
-            }
-            else {  recordForm.style.display = 'block' }
+            } else {  recordForm.style.display = 'block' }
           }
 
           // This function should use fetch to delete one existing entry in the given endpoint.
@@ -202,65 +191,61 @@
 
             let idPrompt = window.prompt("ID : ");
             fetch(endPoint + '/' + idPrompt, { method: 'delete'})
-            .then(resp => {
-                if (resp.ok) {
-                  return resp.json()
-                } else {
-                  return "ID not in db"
-                }
-              })
+              .then(resp => {
+                if (resp.ok) {  return resp.json()
+                } else {  return "ID not in db" }})
               .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
               .catch(error => outPut.value = error)
           }
           
-      window.addEventListener('DOMContentLoaded', () => {
-        // Action Form Event Listener
-        document
-          .getElementById("actionForm")
-          .addEventListener("submit", event => {
-            event.preventDefault();
-            let command = document.getElementById('action').value;
+            window.addEventListener('DOMContentLoaded', () => {
+              // Action Form Event Listener
+              document
+                .getElementById("actionForm")
+                .addEventListener("submit", event => {
+                  event.preventDefault();
+                  let command = document.getElementById('action').value;
 
-            switch (command) {
-              case "List All":
-                fetchAll();
-                break;
-              case "List One":
-                fetchOne();
-                break;
-              case "Create":
-                createRecord('show');
-                break;
-              case "Update":
-                updateRecord('show');
-                break;
-              case "Delete":
-                deleteRecord();
-                break;
-              default:
-                alert("Error: Illegal Action");
-            }
-          });
+                  switch (command) {
+                    case "List All":
+                      fetchAll();
+                      break;
+                    case "List One":
+                      fetchOne();
+                      break;
+                    case "Create":
+                      createRecord('show');
+                      break;
+                    case "Update":
+                      updateRecord('show');
+                      break;
+                    case "Delete":
+                      deleteRecord();
+                      break;
+                    default:
+                      alert("Error: Illegal Action");
+                  }
+                });
 
-        // Record Form Event Listener
-        document
-          .getElementById("recordForm")
-          .addEventListener("submit", event => {
-            event.preventDefault();
-            let command = document.getElementById('action').value;
-            
-            switch (command) {
-              case "Create":
-                createRecord('submit');
-                break;
-              case "Update":
-                updateRecord('submit');
-                break;
-              default:
-                alert("Error: Illegal Action");
-            }
-          });
-      });
+              // Record Form Event Listener
+              document
+                .getElementById("recordForm")
+                .addEventListener("submit", event => {
+                  event.preventDefault();
+                  let command = document.getElementById('action').value;
+                  
+                  switch (command) {
+                    case "Create":
+                      createRecord('submit');
+                      break;
+                    case "Update":
+                      updateRecord('submit');
+                      break;
+                    default:
+                      alert("Error: Illegal Action");
+                  }
+                });
+            });
     </script>
   </body>
 </html>

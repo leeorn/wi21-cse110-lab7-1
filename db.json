@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "title": "",
-      "author": "",
+      "title": "1",
+      "author": "1",
       "id": 1
     },
     {
@@ -11,14 +11,9 @@
       "id": 2
     },
     {
-      "title": "",
-      "author": "",
+      "title": "3",
+      "author": "3",
       "id": 3
-    },
-    {
-      "title": "TEST",
-      "author": "TEST",
-      "id": 4
     }
   ],
   "comments": [],

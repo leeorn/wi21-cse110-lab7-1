@@ -1,33 +1,28 @@
 {
   "posts": [
     {
-      "author": "1",
-      "title": "1",
+      "title": "",
+      "author": "",
       "id": 1
     },
     {
-      "author": "2",
       "title": "2",
+      "author": "2",
       "id": 2
     },
     {
-      "author": "3",
-      "title": "3",
+      "title": "",
+      "author": "",
       "id": 3
     },
     {
-      "author": "4",
-      "title": "4",
+      "title": "TEST",
+      "author": "TEST",
       "id": 4
-    },
-    {
-      "author": "5",
-      "title": "5",
-      "id": 5
     }
   ],
   "comments": [],
   "profile": {
-    "name": "T"
+    "name": "typicode"
   }
 }

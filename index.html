@@ -85,6 +85,7 @@
           // From the 4 CRUD actions, this is the READ action, and uses the GET http method.
           // The main difference from fetchOne() will be the URL you request from; check
           // the writeup to view the URL pattern for fetch one and fetch all
+          
           function fetchAll() {
             let endPoint = document.getElementById('endpoint').value
             let recordForm = document.getElementById('recordForm')
@@ -93,14 +94,14 @@
             
             fetch (endPoint)
               .then(resp=> {
-                  if (resp.ok) {
-                   
-                    return resp.json()
-                  } else {
-                   return date => outPut.value("Not SUCCESSFUL")
-                  }
+                if (resp.ok) {
+                  
+                  return resp.json()
+                } else {
+                  return date => outPut.value("Not SUCCESSFUL")
+                }
               })
-              .then(data=>outPut.value = JSON.stringify(data))
+              .then(dataOutput=>outPut.value = JSON.stringify(dataOutput))
               .catch(error => outPut.value = error)
           }
           
@@ -108,24 +109,25 @@
           // From the 4 CRUD actions, this is the READ action, and uses the GET http method.
           // The main difference from fetchAll() will be the URL you request from; check
           // the writeup to view the URL pattern for fetch one and fetch all
+          
           function fetchOne() {
-            let endPoint = document.getElementById('endpoint').value
-            let recordForm = document.getElementById('recordForm')
-            let outPut = document.getElementById('output')
-            recordForm.style.display = 'none'
+              let endPoint = document.getElementById('endpoint').value
+              let recordForm = document.getElementById('recordForm')
+              let outPut = document.getElementById('output')
+              recordForm.style.display = 'none'
 
-            let idPrompt = window.prompt("ID : ");
-            fetch(endPoint + "/" + idPrompt)
-              .then(resp => {
-                if (resp.ok) {
-                  return resp.json()
-                } else {
-                  return "ID not in db"
-                }
-              })
-              .then(data => { outPut.value = (JSON.stringify(data)) ? JSON.stringify(data) : "ID not in db"})
-              .catch(error => outPut.value=error)
-          }
+              let idPrompt = window.prompt("ID : ");
+              fetch(endPoint + '/' + idPrompt)
+                .then(resp => {
+                  if (resp.ok) {
+                    return resp.json()
+                  } else {
+                    return "ID not in db"
+                  }
+                })
+                .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
+                .catch(error => outPut.value = error)
+            }
 
           // This function should use fetch to create one entry in the given endpoint.
           // From the 4 CRUD actions, this is the CREATE action, and uses the POST http method.
@@ -148,18 +150,13 @@
                   body: JSON.stringify(inputData)
                   })
                   .then(resp => resp.json())
-                  .then(json => console.log(json))
+                  .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
                   .catch(error => outPut.value = error)
-              
-                } 
-                else 
-                {
-                recordForm.style.display = 'block'
-                }
-            
+                } else { recordForm.style.display = 'block' }
               }
    
-          // This function should use fetch to update one existing entry in the given endpoint.
+          
+              // This function should use fetch to update one existing entry in the given endpoint.
           // From the 4 CRUD actions, this is the UPDATE action, and uses the PUT http method.
           // The main difference from createRecord() will be the URL you send data to; check
           // the writeup to view the URL pattern for create and update
@@ -184,8 +181,9 @@
               body: JSON.stringify(inputData)
             })
               .then(resp => resp.json())
-              .then(json => console.log(json))
-              .catch(err => console.log(err))
+              // .then(json => console.log(json))
+              .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
+              .catch(error => outPut.value = error)
             }
             else {  recordForm.style.display = 'block' }
           }
@@ -203,7 +201,7 @@
             recordForm.style.display = 'none'
 
             let idPrompt = window.prompt("ID : ");
-            fetch(endPoint + '/' + idPrompt, { method: "DELETE"})
+            fetch(endPoint + '/' + idPrompt, { method: 'delete'})
             .then(resp => {
                 if (resp.ok) {
                   return resp.json()
@@ -211,7 +209,7 @@
                   return "ID not in db"
                 }
               })
-              .then(data => outPut.value = JSON.stringify(data))
+              .then(dataOutput => outPut.value = JSON.stringify(dataOutput))
               .catch(error => outPut.value = error)
           }
           
